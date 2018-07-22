@@ -8,7 +8,7 @@ function displayGiphs() {
     $("#img-field").empty()
     var giph = $("#search-item").val().trim();
     searchTerms.push(giph)
-    $("#btn-field").append("<div><button type='button' class='btn btn-info'>"+giph+"</button></div>")
+    $("#btn-field").append("<button type='button' class='btn btn-info'>"+giph+"</button>")
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giph + "&rating=g&fmt=json&api_key=NCWFcjgphTcq8gGzLPS918neSnqMDRDO&limit=10";
 
     // Creating an AJAX call for giph retreivale
