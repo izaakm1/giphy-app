@@ -8,7 +8,7 @@ function displayGiphs() {
     $("#img-field").empty()
     var giph = $("#search-item").val().trim();
     searchTerms.push(giph)
-    $("#btn-field").append("<button type='button' class='btn btn-info'>"+giph+"</button>")
+    $("#btn-field").append("<button type='button' class='btn btn-info'id="+giph+">"+giph+"</button>")
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giph + "&rating=g&fmt=json&api_key=NCWFcjgphTcq8gGzLPS918neSnqMDRDO&limit=10";
 
     // Creating an AJAX call for giph retreivale
@@ -21,7 +21,6 @@ function displayGiphs() {
 
         result.data.forEach(element => {
             $("#img-field").append("<img src="+element.images.fixed_height.url+">")
-            console.log(element.url)
         });
     })
     
@@ -34,7 +33,7 @@ window.addEventListener("keypress", enterSearch, false);
 
 function enterSearch(e) {
     if (e.keyCode == 13 ) {
-    console.log(e.keyCode + "Fuck ya")
+    displayGiphs()
 } else {
     console.log(e.keyCode)
 }
