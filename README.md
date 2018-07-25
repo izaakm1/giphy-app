@@ -8,3 +8,4 @@
 * 10 giphs are then dynamically displayed on the page 
 *  a new button remembering the input is displayed at the top of the page for easy retrieval later on
 
+Link to site https://izaakmills.github.io/giphy-app/

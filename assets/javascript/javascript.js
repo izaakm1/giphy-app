@@ -47,7 +47,7 @@ function displayGiphs() {
     // if not already a part of the button field array, add it to it
     if (searchTerms.indexOf(findGiph) == -1){
         searchTerms.push(findGiph)
-        $("#btn-field").append("<button type='button' class='btn btn-info giphResult-btn'id="+findGiph+">"+findGiph+"</button>")
+        $("#btn-field").append("<button type='button' class='btn btn-info giphResult-btn' id="+findGiph+">"+findGiph+"</button>")
         }    
 
     // *** AJAX Section ***
@@ -62,7 +62,7 @@ function displayGiphs() {
         console.log(result)
         result.data.forEach(element => {
             // $("#img-field").append("<span><img src="+element.images.fixed_height.url+"></span>")
-            $("#img-field").append(`<span class='card' id=`+findGiph+`style='width: 14rem;'>\<img class='card-img-top' src=`+element.images.fixed_width.url+`>\<span class='card-body'>\<span class='card-text'>`+element.title+` Rating: `+element.rating+` </span></span></span>`)
+            $("#img-field").append("<span class='card' id="+findGiph+" style='width: 10rem;'>\<img class='card-img-top' src="+element.images.fixed_height.url+">\<span class='card-body'>\<span class='card-text'>"+element.title+" Rating: "+element.rating+" </span></span></span>")
         });
     })
 }; // end function
@@ -82,11 +82,10 @@ function displayRandomGiphs() {
 
         // result.data.forEach(element => {
             // $("#img-field").append("<span><img src="+element.images.fixed_height.url+"></span>")
-            $("#img-field").append(`<span class='card' id=`+result.data.title+`style='width: 14rem;'>\<img class='card-img-top' src=`+result.data.images.fixed_height.url+`>\<span class='card-body'>\<span class='card-text'>`+result.data.title+` Rating: `+result.data.rating+` </span></span></span>`)
+            $("#img-field").append(`<span class="card" id="+result.data.title+"style="width: 10rem;">\<img class='card-img-top' src=`+result.data.images.fixed_height.url+`>\<span class='card-body'>\<span class='card-text'>`+result.data.title+` Rating: `+result.data.rating+` </span></span></span>`)
         // });
     })
 }//end random function
-
 
 
 }); //document ready closing tag
