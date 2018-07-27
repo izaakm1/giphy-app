@@ -47,12 +47,11 @@ function displayGiphs() {
     // if not already a part of the button field array, add it to it
     if (searchTerms.indexOf(findGiph) == -1){
         searchTerms.push(findGiph)
-        $("#btn-field").append("<button type='button' class='btn btn-info giphResult-btn' id="+findGiph+">"+findGiph+"</button>")
+        $("#btn-field").append("<button type='button' class='btn btn-info giphResult-btn' id='"+findGiph+"'>"+findGiph+"</button>")
         }    
 
     // *** AJAX Section ***
     // Creating an AJAX call for giph retrieval
-
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + findGiph + "&rating=g&fmt=json&api_key=NCWFcjgphTcq8gGzLPS918neSnqMDRDO&limit=10";
    
     $.ajax({
@@ -61,11 +60,10 @@ function displayGiphs() {
     }).then(function(result) {
         console.log(result)
         result.data.forEach(element => {
-            // $("#img-field").append("<span><img src="+element.images.fixed_height.url+"></span>")
-            $("#img-field").append("<span class='card' id="+findGiph+" style='width: 10rem;'>\<img class='card-img-top' src="+element.images.fixed_height.url+">\<span class='card-body'>\<span class='card-text'>"+element.title+" Rating: "+element.rating+" </span></span></span>")
+            $("#img-field").append("<span><img src="+element.images.fixed_height.url+"></span>")
+            $(".bulletin").html("<span class='freetext'>Recently Viewed")
         });
-    })
-}; // end function
+    })}; // end function
 
 function displayRandomGiphs() {
     $("#img-field").empty()
@@ -79,11 +77,10 @@ function displayRandomGiphs() {
       method: "GET"
     }).then(function(result) {
         console.log(result)
-
-        // result.data.forEach(element => {
-            // $("#img-field").append("<span><img src="+element.images.fixed_height.url+"></span>")
-            $("#img-field").append(`<span class="card" id="+result.data.title+"style="width: 10rem;">\<img class='card-img-top' src=`+result.data.images.fixed_height.url+`>\<span class='card-body'>\<span class='card-text'>`+result.data.title+` Rating: `+result.data.rating+` </span></span></span>`)
-        // });
+        
+        var resultTitle = result.data.title
+        console.log(resultTitle)
+        $("#img-field").append("<span><img src="+result.data.images.fixed_height.url+"></span>")
     })
 }//end random function
 
