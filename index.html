@@ -14,30 +14,32 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
+
 <body>
     <div class="container">
         <div class="row">
-            <div class="input-group mb-2">
-                <input type="text" id="search-item" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-            </div>
-        </div>
-    
-        <!-- submit buttons row -->
-        <div class ="row">
             <div class="col-sm-12">
-                <button class="btn btn-outline-secondary" type="button" id="btn-giph-search">Find It!</button>
-                <button class="btn btn-outline-secondary" type="button" id="btn-giph-random-search">Random</button>
+                <form class="form-inline md-form mr-auto mb-4">
+                    <input class="form-control mr-sm-2" id="search-item" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-secondary" type="button" id="btn-giph-search">Find It!</button>
+                    <button class="btn btn-outline-secondary" type="button" id="btn-giph-random-search">Random</button>
+                </form>
             </div>
         </div>
+        <!-- submit buttons row -->
+
         <div class="row">
-            <div class="col-sm-12 bulletin"></div>
-            <div class="col-sm-12" id="btn-field">
+            <div class="col-sm-1 bulletin">
+                <div id="btn-field"></div>
             </div>
-            <div class="col-sm-12" id="img-field">
+
+            <div class="col-sm-11">
+                <div id="img-field"></div>
             </div>
         </div>
 
-    </div><!-- container closing tag -->
+    </div>
+    <!-- container closing tag -->
     <script src="./assets/javascript/javascript.js" async defer></script>
 </body>
 

@@ -1,43 +1,51 @@
-html{
-    background-color:#8305B1;
-    width:100%;
-    height:100%;
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: purple;
 }
-
+.div{
+    padding:0;
+}
+.form-inline{
+    margin:10px;
+}
 .btn{
+    float:left;
     padding:5px;
     margin:5px;
     text-align: center;
-    color:yellow;
-    background-color: black;
-    border-color:yellow;
+    color:purple;
+    background-color: white;
+    border-color:black
 }
 .freetext{
     color:white;
     text-align: center;
 }
 #search-item{
-    padding:10px;
-    width:60%;
+    float:left;
 }
-.card-text{
-    text-align: center;
-}
-.giph-img{
+.display-img{
     display:inline;
+}
+.result-img{
+    display:inline;
+    border: black;
+    border-style: solid;
+    border-color: white;
+    border-width: 5px;
 }
 .img-field{
    padding:0;
    margin:0;
 }
+.bulletin{
+    font-size: 12px;
+}
 .container{
     text-align:center;
-    background-color:#8305B1;
     margin:0;
     padding:0;
     max-width:100%;
-}
-.card{
-    margin-left:auto;
-    margin-right:auto;
 }
