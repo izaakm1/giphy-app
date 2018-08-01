@@ -13,7 +13,9 @@ function enterKeyIsHit(e) {
     if ($("#search-item").val().trim()!="") {
         if (e.keyCode === 13 ) {
         findGiph = $("#search-item").val().trim();
-        displayGiphs()
+        // displayGiphs()
+        debugger;
+        console.log(findGiph)
         }   
     }
     // console.log(e)    
