@@ -10,12 +10,13 @@ window.addEventListener("keypress", enterKeyIsHit, false)
 
 // if enter is hit
 function enterKeyIsHit(e) {
-    if ($("#search-item").val().trim()!="") {
-        if (e.keyCode === 13 ) {
-        findGiph = $("#search-item").val().trim();
-        // displayGiphs()
-        debugger;
-        console.log(findGiph)
+    var $sItem = $("#search-item").val().trim()
+    if ($sItem!="") {
+        if (e.keyCode == 13 ) {
+            e.preventDefault();
+            findGiph = $sItem;
+            displayGiphs()
+            console.log(findGiph)
         }   
     }
     // console.log(e)    
@@ -31,7 +32,6 @@ $(document).on("click", "#btn-giph-search",function(){
 });
 // if field button is clicked
 $(document).on("click", ".giphResult-btn",function(){
-    // searchType = "field-button"
     findGiph = $(this).attr("id")
     console.log($(this).attr("id"))
     displayGiphs()
@@ -39,6 +39,11 @@ $(document).on("click", ".giphResult-btn",function(){
 //if random button is selected
 $(document).on("click", "#btn-giph-random-search",function(){
     displayRandomGiphs()
+});
+// if stop button is hit
+$(document).on("click", ".pause-giphs",function(){
+    findGiph = $(this).attr("id")
+
 });
 
 function displayGiphs() {
