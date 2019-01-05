@@ -1,5 +1,5 @@
 # giphy-app
-# Using the Giphy API endpoint this website retrieves and displays giphs to the user.
+#### Using the Giphy API endpoint this website retrieves and displays giphs to the user.
 
 # How to use
 
