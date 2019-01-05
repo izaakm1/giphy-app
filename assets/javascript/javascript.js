@@ -1,6 +1,3 @@
-// Api Key:
-// NCWFcjgphTcq8gGzLPS918neSnqMDRDO
-
 $(document).ready(function() {
 
 var searchTerms = []
