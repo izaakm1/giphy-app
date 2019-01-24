@@ -7,7 +7,6 @@ import API from './utils/API'
 class App extends Component {
   constructor(props) {
     super(props);
-    // Don't call this.setState() here!
     this.state = { giphs: [] };
   }
   componentDidMount = () =>{
@@ -15,14 +14,16 @@ class App extends Component {
     API.getStartUpGiphs()
       .then((result) =>{
         console.dir(result,{depth:null, color:true})
+        this.setState({giphs:result.data.returnArr})
       })
   }
+  
 
   render() {
     return (
       <div className="App">
       <SearchBar />
-      <GiphField />
+      <GiphField giphs={this.state.giphs} />
       </div>
     );
   }

@@ -2,7 +2,7 @@
   "name": "what-the-gif",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^3.0.2",
@@ -16,7 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "startdev": "concurrently \"npm start\" \"cd ./server && npm start\" ",
+    "startdev": "concurrently \"npm run start\" \"npm run startserver\" ",
+    "startserver":"cd server && npm run start",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

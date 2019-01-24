@@ -6,7 +6,6 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
 import ShareIcon from '@material-ui/icons/Share';
 // import tileData from './tileData';
 
@@ -27,43 +26,13 @@ const styles = theme => ({
   },
 });
 
-  const tileData = [
-    {
-      img: "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
-      title: 'Spongebob',
-      author: 'Izaak Mills',
-      share: "Link"
-    },
-    {
-      img: "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
-      title: 'Spongebob',
-      author: 'Izaak Mills',
-    },
-    {
-      img: "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
-      title: 'Spongebob',
-      author: 'Izaak Mills',
-    },
-    {
-      img: "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
-      title: 'Spongebob',
-      author: 'Izaak Mills',
-    },
-    {
-      img: "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
-      title: 'Spongebob',
-      author: 'Izaak Mills',
-    },
-    {
-      img: "https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif",
-      title: 'Spongebob',
-      author: 'Izaak Mills',
-    },
-   
-  ];
+class TitlebarGridList extends React.Component {
+  constructor(props) {
+    super(props);
+}
 
-function TitlebarGridList(props) {
-  const { classes } = props;
+  render(){
+  const { classes } = this.props;
 
   return (
     <div className={classes.root}>
@@ -71,16 +40,15 @@ function TitlebarGridList(props) {
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           {/* <ListSubheader component="div"><h2>Giphs</h2></ListSubheader> */}
         </GridListTile>
-        {tileData.map(tile => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
+        {this.props.giphs.map((giph,index) => (
+          <GridListTile key={giph.index}>
+            <img src={giph.fixedHeight} alt={giph.title} />
             <GridListTileBar
-              title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
+              title={giph.title}
+              subtitle={<span>From: {giph.username}</span>}
               actionIcon={
                 <IconButton className={classes.icon}>
-
-                  <ShareIcon />
+                  <ShareIcon target="_blank" href={giph.url}/>
                 </IconButton>
               }
             />
@@ -89,6 +57,7 @@ function TitlebarGridList(props) {
       </GridList>
     </div>
   );
+}
 }
 
 TitlebarGridList.propTypes = {
