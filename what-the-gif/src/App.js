@@ -17,13 +17,21 @@ class App extends Component {
         this.setState({giphs:result.data.returnArr})
       })
   }
-  
 
+  handleSubmitSearch = (searchValue) => {
+    console.log('searching for ' + searchValue)
+    API.searchGiphs()
+      .then((result) => {
+      console.log(result)
+      })
+      .catch(err => { console.log(err)})
+  }
+  
   render() {
     return (
       <div className="App">
       <SearchBar />
-      <GiphField giphs={this.state.giphs} />
+      <GiphField giphs={this.state.giphs} search={this.handleSubmitSearch} />
       </div>
     );
   }
