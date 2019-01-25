@@ -9,22 +9,7 @@ router.get('/getStartUpGiphs', (req, res, next) => {
     axios.get("https://api.giphy.com/v1/gifs/trending?&rating=pg&fmt=json&api_key="+APIKEY+"")
     .then(function(result) {
         let giphs = result.data.data
-        let returnArr = []
-        
-        giphs.forEach(giph => {
-          let returnObj = {}
-            returnObj.title = giph.title
-            returnObj.username = (giph.username === '') ? "unknown" : giph.user.display_name
-            returnObj.url = giph.url
-            returnObj.rating = giph.rating
-            returnObj.originalStill = giph.images.original_still
-            returnObj.fixedHeightStill = giph.images.fixedHeightStill
-            returnObj.fixedHeight = giph.images.fixed_height.url
-            returnObj.looping = giph.looping
-
-            returnArr.push(returnObj)
-        })
-        res.send({returnArr});
+        res.send({giphs});
     })
     .catch(err=>{
       console.dir(err,{depth:null,colors:true})
@@ -33,11 +18,17 @@ router.get('/getStartUpGiphs', (req, res, next) => {
 })
 
 router.get("/searchGiphs",(req,res,next) => {
-  console.dir(req.body,{depth:null,colors:true})
-  // axios.get("https://api.giphy.com/v1/gifs/search?q="+query+"&rating=pg&fmt=json&api_key="+APIKEY+"")
-  //   .then(result=>{
-  //     console.log(result.data.data.length)
-  //   })
+  console.log(req.query.term)
+  let query = req.query.term
+  axios.get("https://api.giphy.com/v1/gifs/search?q="+query+"&rating=pg&fmt=json&api_key="+APIKEY+"")
+    .then(result=>{
+      console.log(result.data.data.length)
+      res.send(result.data.data)
+    })
+    .catch(err=> {
+      console.dir(err,{depth:null,colors:true})
+      res.send("something went wrong check server output logging")
+    })
 })
 
 module.exports = router;

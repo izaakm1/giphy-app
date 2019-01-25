@@ -5,8 +5,8 @@ export default {
         console.log("api routing")
         return axios.get("/api/getStartUpGiphs")
     },
-    searchGiphs: () =>{
-        console.log("api routing")
-        return axios.get("/api/searchGiphs")
+    searchGiphs: (term) =>{
+        console.log("api routing searchGiphs " + term)
+        return axios.get("/api/searchGiphs",{params:{term}})
     }
 }

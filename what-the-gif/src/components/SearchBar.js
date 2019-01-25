@@ -85,8 +85,9 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ searchValue: event.target.value });
   };
 
-  handleSubmit = () => {
-    console.log("what the fuck");
+  handleSubmit = (s) => {
+    console.log("what the fuck"+ s);
+    console.log(this.props);
   };
 
   render() {
@@ -116,8 +117,8 @@ class PrimarySearchAppBar extends React.Component {
                 }}
               /> */}
             {/* </div> */}
-            <Form id="simple-form">
-              <Text field="search" id="name-field" style={{height:"100%",backGroundColor:"black"}} />
+            <Form id="simple-form" onSubmit={formState=>this.props.search(formState.search)}>
+              <Text field="search" id="name-field" />
               <button type="submit">Submit</button>
             </Form>
           </Toolbar>

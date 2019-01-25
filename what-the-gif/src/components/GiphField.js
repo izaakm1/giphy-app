@@ -18,8 +18,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: "100%",
-    height: "100%",
+    width: "auto",
+    height: "auto",
+    justifyContent:"center",
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -30,22 +31,22 @@ const styles = theme => ({
 });
 
 class TitlebarGridList extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+  }
 
   render(){
   const { classes } = this.props;
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
+      <GridList cellHeight={"auto"} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div"><h2>Giphs</h2></ListSubheader>
+          {/* <ListSubheader component="div"><p>Results</p></ListSubheader> */}
         </GridListTile>
         {this.props.giphs.map((giph,index) => (
-          <GridListTile key={index}>
-            <img src={giph.fixedHeight} alt={giph.title} className={classes.imgTitle}  />
+          <GridListTile key={index} style={{height:"auto",width:"auto",overflow:"hidden"}} >
+            <img src={giph.images.fixed_height.url} alt={giph.title} className={classes.imgTitle}  />
             <GridListTileBar
               title={giph.title}
               subtitle={<span>From: {giph.username}</span>}

@@ -8,30 +8,36 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { giphs: [] };
+    this.handleSearch = this.handleSearch.bind(this)
   }
   componentDidMount = () =>{
     console.log("mounted")
     API.getStartUpGiphs()
       .then((result) =>{
-        console.dir(result,{depth:null, color:true})
-        this.setState({giphs:result.data.returnArr})
+        console.dir(result.data,{depth:null, color:true})
+        this.setState({giphs:result.data.giphs})
       })
   }
 
-  handleSubmitSearch = (searchValue) => {
+  handleSearch = (searchValue) => {
     console.log('searching for ' + searchValue)
-    API.searchGiphs()
+    API.searchGiphs(searchValue)
       .then((result) => {
       console.log(result)
+      this.setState({giphs:result.data})
       })
       .catch(err => { console.log(err)})
   }
   
   render() {
+    let props = {
+      giphs:this.state.giphs,
+      search:this.handleSearch
+    }
     return (
       <div className="App">
-      <SearchBar />
-      <GiphField giphs={this.state.giphs} search={this.handleSubmitSearch} />
+      <SearchBar {...props}/>
+      <GiphField {...props} />
       </div>
     );
   }
