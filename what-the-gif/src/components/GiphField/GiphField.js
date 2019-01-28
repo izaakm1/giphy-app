@@ -7,6 +7,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import ShareIcon from '@material-ui/icons/Share';
+import UrlModal from './UrlModal/UrlModal'
 // import tileData from './tileData';
 
 const styles = theme => ({
@@ -52,7 +53,7 @@ class TitlebarGridList extends React.Component {
               subtitle={<span>From: {giph.username}</span>}
               actionIcon={
                 <IconButton className={classes.icon}>
-                  <ShareIcon target="_blank" href={giph.url}/>
+                  <UrlModal link={giph.url} title={giph.title} />
                 </IconButton>
               }
             />

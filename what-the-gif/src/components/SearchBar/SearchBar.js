@@ -10,6 +10,8 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { Form, Text } from "informed";
+import './SearchBar.css'
+
 
 const styles = theme => ({
   root: {
@@ -90,12 +92,13 @@ class PrimarySearchAppBar extends React.Component {
     console.log(this.props);
   };
 
+
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="sticky">
           <Toolbar>
             <Typography
               className={classes.title}
@@ -119,7 +122,7 @@ class PrimarySearchAppBar extends React.Component {
             {/* </div> */}
             <Form id="simple-form" onSubmit={formState=>this.props.search(formState.search)}>
               <Text field="search" id="name-field" />
-              <button type="submit">Submit</button>
+              <button type="submit" className="searchBtn">Submit</button>
             </Form>
           </Toolbar>
         </AppBar>

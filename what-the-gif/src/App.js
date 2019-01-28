@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar'
-import GiphField from './components/GiphField'
+import SearchBar from './components/SearchBar/SearchBar'
+import GiphField from './components/GiphField/GiphField'
 import API from './utils/API'
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-      <SearchBar {...props}/>
+      <SearchBar {...props} />
       <GiphField {...props} />
       </div>
     );

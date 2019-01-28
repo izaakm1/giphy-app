@@ -3,10 +3,10 @@ let router = express.Router();
 let axios = require('axios')
 
 // let queryURL = "https://api.giphy.com/v1/gifs/"
-let APIKEY = "NCWFcjgphTcq8gGzLPS918neSnqMDRDO&limit=10"
+let APIKEY = "NCWFcjgphTcq8gGzLPS918neSnqMDRDO"
 
 router.get('/getStartUpGiphs', (req, res, next) => {
-    axios.get("https://api.giphy.com/v1/gifs/trending?&rating=pg&fmt=json&api_key="+APIKEY+"")
+    axios.get("https://api.giphy.com/v1/gifs/trending?&rating=pg&limit=50&fmt=json&api_key="+APIKEY+"")
     .then(function(result) {
         let giphs = result.data.data
         res.send({giphs});
@@ -20,7 +20,7 @@ router.get('/getStartUpGiphs', (req, res, next) => {
 router.get("/searchGiphs",(req,res,next) => {
   console.log(req.query.term)
   let query = req.query.term
-  axios.get("https://api.giphy.com/v1/gifs/search?q="+query+"&rating=pg&fmt=json&api_key="+APIKEY+"")
+  axios.get("https://api.giphy.com/v1/gifs/search?q="+query+"&rating=pg&limit=50&&fmt=json&api_key="+APIKEY+"")
     .then(result=>{
       console.log(result.data.data.length)
       res.send(result.data.data)
