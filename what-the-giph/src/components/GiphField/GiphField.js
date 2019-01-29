@@ -6,8 +6,8 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import ShareIcon from '@material-ui/icons/Share';
-import UrlModal from './UrlModal/UrlModal'
+import ShareIcon from '@material-ui/icons/ShareOutlined';
+import ShareSnackbar from './UrlModal/ShareSnackbar'
 // import tileData from './tileData';
 
 const styles = theme => ({
@@ -24,7 +24,7 @@ const styles = theme => ({
     justifyContent:"center",
   },
   icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
+    Outlined: true,
   },
   imgTitle:{
     fontSize:"24"
@@ -32,9 +32,9 @@ const styles = theme => ({
 });
 
 class TitlebarGridList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render(){
   const { classes } = this.props;
@@ -50,10 +50,10 @@ class TitlebarGridList extends React.Component {
             <img src={giph.images.fixed_height.url} alt={giph.title} className={classes.imgTitle}  />
             <GridListTileBar
               title={giph.title}
-              subtitle={<span>From: {giph.username}</span>}
+              // subtitle={<span>From: {giph.username}</span>}
               actionIcon={
-                <IconButton className={classes.icon}>
-                  <UrlModal link={giph.url} title={giph.title} />
+                <IconButton className="">
+                  <ShareSnackbar link={giph.url} title={giph.title} giph={giph.images.fixed_height.url} />
                 </IconButton>
               }
             />

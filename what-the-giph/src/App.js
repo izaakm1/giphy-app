@@ -14,7 +14,7 @@ class App extends Component {
     console.log("mounted")
     API.getStartUpGiphs()
       .then((result) =>{
-        console.dir(result.data,{depth:null, color:true})
+        // console.dir(result.data,{depth:null, color:true})
         this.setState({giphs:result.data.giphs})
       })
   }
