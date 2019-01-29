@@ -1,11 +1,18 @@
 .searchBtn {
-  color: #960fe4 !important;
+  color: #f6f2f8 !important;
   text-transform: uppercase;
-  background: #ffffff;
+  background: #3f51b5;
   /* padding: 4px; */
   margin:20px;
   height:inherit;
-  border: 4px solid #101111 !important;
+  border: 4px solid #fcffff !important;
   border-radius: 6px;
   display: inline-block;
+  font-size:16px;
+  font-weight:bold;
+}
+#search-field {
+   height:24px;
+   width:240px;
+   background:white;
 }

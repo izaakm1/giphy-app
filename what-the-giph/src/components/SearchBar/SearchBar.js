@@ -10,8 +10,8 @@ import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { Form, Text } from "informed";
-import './SearchBar.css'
-
+import "./SearchBar.css";
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const styles = theme => ({
   root: {
@@ -87,11 +87,10 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ searchValue: event.target.value });
   };
 
-  handleSubmit = (s) => {
-    console.log("what the fuck"+ s);
+  handleSubmit = s => {
+    console.log("what the fuck" + s);
     console.log(this.props);
   };
-
 
   render() {
     const { classes } = this.props;
@@ -111,18 +110,24 @@ class PrimarySearchAppBar extends React.Component {
             <div className={classes.search}>
               <div className={classes.searchIcon} />
             </div>
-            <SearchIcon />
-            {/* <InputBase
-                placeholder="Search for GIPHS…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
+            <Form
+              id="search-input"
+              onSubmit={formState => this.props.search(formState.search)}
+            >
+              <Text
+                field="search"
+                id="search-field"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
                 }}
-              /> */}
-            {/* </div> */}
-            <Form id="simple-form" onSubmit={formState=>this.props.search(formState.search)}>
-              <Text field="search" id="name-field" />
-              <button type="submit" className="searchBtn">Submit</button>
+              />
+              <button type="submit" className="searchBtn">
+                Submit
+              </button>
             </Form>
           </Toolbar>
         </AppBar>

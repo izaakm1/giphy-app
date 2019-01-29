@@ -16,12 +16,17 @@ const styles = theme => ({
 class SimpleSnackbar extends React.Component {
   state = {
     open: false,
+    link:""
   };
 
-  handleClick = () => {
+  componentDidMount = () =>{
+        this.setState({link:this.props.link})
+  }
+
+  handleClick = (e) => {
     this.setState({ open: true });
-    // this.props.link.select()
-    document.execCommand("copy",this.state.link);
+    e.clipboardData.setData('text/plain', this.state.link);
+    // this.copyToClipboard()
   };
 
   handleClose = (event, reason) => {
@@ -33,9 +38,9 @@ class SimpleSnackbar extends React.Component {
   };
 
   copyToClipboard = e => {
-    console.log(e.target.select);
-    e.target.select();
-    document.execCommand("copy",this.state.link);
+    console.log(this.state.link);
+    e.clipboardData.setData('text/plain', this.state.link);
+    // document.execCommand("copy",this.state.link);
     // e.target.focus();
     // this.setState({ copySuccess: "Copied to Clipboard!" });
     console.log(this.state.link)

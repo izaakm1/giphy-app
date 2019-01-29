@@ -23,7 +23,7 @@ class App extends Component {
     console.log('searching for ' + searchValue)
     API.searchGiphs(searchValue)
       .then((result) => {
-      console.log(result)
+      // console.log(result)
       this.setState({giphs:result.data})
       })
       .catch(err => { console.log(err)})
