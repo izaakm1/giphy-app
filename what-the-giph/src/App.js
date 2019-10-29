@@ -3,6 +3,7 @@ import './App.css';
 import SearchBar from './components/SearchBar/SearchBar'
 import GiphField from './components/GiphField/GiphField'
 import API from './utils/API'
+import RecentBar from './components/RecentBar';
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,6 @@ class App extends Component {
     this.handleSearch = this.handleSearch.bind(this)
   }
   componentDidMount = () =>{
-    console.log("mounted")
     API.getStartUpGiphs()
       .then((result) =>{
         // console.dir(result.data,{depth:null, color:true})
@@ -20,13 +20,14 @@ class App extends Component {
   }
 
   handleSearch = (searchValue) => {
-    console.log('searching for ' + searchValue)
     API.searchGiphs(searchValue)
       .then((result) => {
       // console.log(result)
       this.setState({giphs:result.data})
       })
-      .catch(err => { console.log(err)})
+      .catch(err => { 
+        console.log(`there was an error searching for ${searchValue}`,err)
+      });
   }
   
   render() {
@@ -35,10 +36,10 @@ class App extends Component {
       search:this.handleSearch
     }
     return (
-      <div className="App">
-      <SearchBar {...props} />
-      <GiphField {...props} />
-      </div>
+      <>
+        <SearchBar className={'header'} {...props} />
+        <RecentBar {...props}/>
+      </>
     );
   }
 }

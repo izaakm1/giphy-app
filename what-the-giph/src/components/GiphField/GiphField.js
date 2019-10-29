@@ -1,59 +1,51 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import ShareIcon from '@material-ui/icons/ShareOutlined';
-import ShareSnackbar from './UrlModal/ShareSnackbar'
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import React from 'react';
+import ShareSnackbar from './UrlModal/ShareSnackbar';
 // import tileData from './tileData';
 
-const styles = theme => ({
+const _styles = theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    flexDirection: 'row',
+    overflow:'none',
   },
   gridList: {
-    width: "auto",
-    height: "auto",
-    justifyContent:"center",
-  },
-  icon: {
-    Outlined: true,
-  },
-  imgTitle:{
-    fontSize:"24"
+    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignContent: 'stretch'
   }
 });
 
 class TitlebarGridList extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   render(){
-  const { classes } = this.props;
+    const { giphs } = this.props;
 
   return (
-    <div className={classes.root}>
-      <GridList cellHeight={"auto"} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          {/* <ListSubheader component="div"><p>Results</p></ListSubheader> */}
-        </GridListTile>
-        {this.props.giphs.map((giph,index) => (
-          <GridListTile key={index} style={{height:"auto",width:"auto",overflow:"hidden"}} >
-            <img src={giph.images.fixed_height.url} alt={giph.title} className={classes.imgTitle}  />
+    <div className={_styles.root}>
+      <GridList className={_styles.gridList}>
+        {giphs.map((giph,index) => (
+          <GridListTile 
+            key={index} 
+            style={{ 
+              backgroundImage: `url(${giph.images.fixed_height.url})`, 
+              backgroundSize: 'cover',
+            }} 
+            >
             <GridListTileBar
-              title={giph.title}
-              // subtitle={<span>From: {giph.username}</span>}
+              title={''}
+              subtitle={<span>{giph.title}</span>}
               actionIcon={
-                <IconButton className="">
-                  <ShareSnackbar link={giph.url} title={giph.title} giph={giph.images.fixed_height.url} />
+                <IconButton color={'secondary'}>
+                  <ShareSnackbar 
+                    link={giph.url} 
+                    title={giph.title} 
+                    giph={giph.images.fixed_height.url} />
                 </IconButton>
               }
             />
@@ -69,4 +61,4 @@ TitlebarGridList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TitlebarGridList);
+export default withStyles(_styles)(TitlebarGridList);

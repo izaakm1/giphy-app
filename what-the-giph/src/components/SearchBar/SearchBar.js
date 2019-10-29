@@ -1,17 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import TextField from "@material-ui/core/TextField";
-import { fade } from "@material-ui/core/styles/colorManipulator";
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles/colorManipulator";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 import SearchIcon from "@material-ui/icons/Search";
 import { Form, Text } from "informed";
+import PropTypes from "prop-types";
+import React from "react";
 import "./SearchBar.css";
-import InputAdornment from '@material-ui/core/InputAdornment';
 
 const styles = theme => ({
   root: {
@@ -59,19 +56,6 @@ const styles = theme => ({
     color: "white",
     width: "40%"
   },
-  inputInput: {
-    borderWidth: "medium",
-    color: "white",
-    paddingTop: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-    paddingLeft: theme.spacing.unit * 10,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 200
-    }
-  }
 });
 
 class PrimarySearchAppBar extends React.Component {
@@ -83,12 +67,11 @@ class PrimarySearchAppBar extends React.Component {
   }
 
   handleSearchChange = event => {
-    // console.log(e.target.value);
     this.setState({ searchValue: event.target.value });
   };
 
   handleSubmit = s => {
-    console.log("what the fuck" + s);
+
     console.log(this.props);
   };
 

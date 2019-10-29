@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
+import Snackbar from '@material-ui/core/Snackbar';
+import { withStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import ShareIcon from '@material-ui/icons/ShareOutlined';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const styles = theme => ({
   close: {
@@ -20,13 +19,12 @@ class SimpleSnackbar extends React.Component {
   };
 
   componentDidMount = () =>{
-        this.setState({link:this.props.link})
+    this.setState({link:this.props.link})
   }
 
   handleClick = (e) => {
     this.setState({ open: true });
-    e.clipboardData.setData('text/plain', this.state.link);
-    // this.copyToClipboard()
+    this.copyToClipboard(e);
   };
 
   handleClose = (event, reason) => {
@@ -38,12 +36,8 @@ class SimpleSnackbar extends React.Component {
   };
 
   copyToClipboard = e => {
-    console.log(this.state.link);
+    console.log('copying to clipboard', this.state);
     e.clipboardData.setData('text/plain', this.state.link);
-    // document.execCommand("copy",this.state.link);
-    // e.target.focus();
-    // this.setState({ copySuccess: "Copied to Clipboard!" });
-    console.log(this.state.link)
   };
 
   render() {
